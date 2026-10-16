@@ -1,0 +1,73 @@
+@import "tailwindcss";
+
+@theme inline {
+  /* Global font */
+  --font-sans: var(--font-roboto);
+
+  /* Brand colors */
+  --color-background: #ffffff;
+  --color-foreground: #000000;
+  --color-accent: #059669;
+  --color-test: #059669;
+  --color-muted: #808080;
+
+  /* UI colors */
+  --color-border: #e5e5e5;
+  --color-card: #f5f5f5;
+}
+
+
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-roboto), sans-serif;
+}
+
+/* Swiper Testimonials Pagination */
+.testimonials-swiper .swiper-pagination-bullet {
+  background: #000000;
+  opacity: 0.25;
+  transition: all 0.3s ease;
+  width: 8px;
+  height: 8px;
+}
+
+.testimonials-swiper .swiper-pagination-bullet-active {
+  background: #059669;
+  opacity: 1;
+  width: 26px;
+  border-radius: 9999px;
+}
+
+/* Floating bobbing animation */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-14px);
+  }
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+/* Border beam moving gradient animation */
+@keyframes borderRotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-border-beam {
+  animation: borderRotate 6s linear infinite;
+}
