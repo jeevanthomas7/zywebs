@@ -4,55 +4,52 @@ import React, { useState, useEffect } from "react";
 
 export function Footer() {
   const [currentYear, setCurrentYear] = useState(2025);
+  const [glowX, setGlowX] = useState(50);
+  const [glowing, setGlowing] = useState(false);
 
   useEffect(() => {
     setCurrentYear(new Date().getFullYear());
   }, []);
 
+  const moveGlow = (e: React.PointerEvent<HTMLDivElement>) => {
+    if (e.pointerType !== "mouse") return;
+    const b = e.currentTarget.getBoundingClientRect();
+    const x = Math.max(0, Math.min(100, ((e.clientX - b.left) / b.width) * 100));
+    setGlowX(x);
+    setGlowing(true);
+  };
+
   return (
     <footer className="sticky bottom-0 z-0 w-full bg-white px-1 sm:px-3 py-1 sm:py-3">
       <div className="relative w-full overflow-hidden rounded-xl sm:rounded-2xl bg-neutral-950 text-white border border-white/10 px-4 py-6 sm:px-8 sm:py-8 lg:px-10 lg:py-10 isolate flex flex-col justify-between">
-        <div className="relative w-full overflow-hidden select-none py-6 sm:py-10 lg:py-12 flex items-center justify-center">
-          <div
-            aria-hidden="true"
-            className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[85%] max-w-4xl h-32 sm:h-48 bg-[radial-gradient(ellipse_at_center,rgba(52,211,153,0.35)_0%,rgba(5,150,105,0.12)_45%,transparent_75%)] blur-3xl -z-10"
-          />
+        <div
+          onPointerMove={moveGlow}
+          onPointerLeave={() => setGlowing(false)}
+          className="relative w-full overflow-hidden select-none py-6 sm:py-10 lg:py-14 flex items-center justify-center cursor-default"
+        >
+          <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
+            <div
+              style={{
+                left: `${glowX}%`,
+                opacity: glowing ? 0.7 : 0,
+              }}
+              className="absolute -bottom-36 h-[260px] w-[600px] -translate-x-1/2 rounded-full bg-[#059669] blur-[100px] transition-[left,opacity] duration-500 ease-out sm:-bottom-48 sm:h-[350px] sm:w-[850px] lg:-bottom-60 lg:h-[450px] lg:w-[1100px]"
+            />
+          </div>
 
-          <h2 className="relative z-10 w-full text-center font-black uppercase tracking-tight sm:tracking-normal leading-none text-[clamp(2.1rem,11.5vw,11.5rem)] drop-shadow-[0_4px_30px_rgba(52,211,153,0.3)] select-none flex items-center justify-center flex-wrap gap-x-3 sm:gap-x-6">
-            {[
-              { word: "ZYWEBS", startIndex: 0 },
-              { word: "STUDIO", startIndex: 6 },
-            ].map((part) => (
-              <span key={part.word} className="inline-flex">
-                {part.word.split("").map((char, charIdx) => {
-                  const globalIdx = part.startIndex + charIdx;
-                  const isTopGreen = globalIdx % 2 === 0;
-
-                  return (
-                    <span
-                      key={globalIdx}
-                      className={`inline-block ${
-                        isTopGreen
-                          ? "bg-gradient-to-b from-[#34d399] via-[#a7f3d0] to-white bg-clip-text text-transparent"
-                          : "bg-gradient-to-t from-[#34d399] via-[#a7f3d0] to-white bg-clip-text text-transparent"
-                      }`}
-                    >
-                      {char}
-                    </span>
-                  );
-                })}
-              </span>
-            ))}
+          <h2 className="relative z-10 w-full text-center font-black uppercase tracking-tight sm:tracking-normal leading-none text-[clamp(2.1rem,11.5vw,11.5rem)] text-white/90 select-none flex items-center justify-center flex-wrap gap-x-3 sm:gap-x-6 transition-colors duration-300">
+            <span>ZYWEBS</span>
+            <span>STUDIO</span>
           </h2>
         </div>
 
         <div className="mt-4 sm:mt-6 pt-5 sm:pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 sm:gap-6 text-center sm:text-left">
-          <div className="flex items-center">
+          <div className="flex items-center hidden sm:flex">
             <a href="#" className="inline-block group/logo">
               <img
-                src="/logo/logo.png"
+                src="/logo/logowhite.png"
                 alt="ZYWEBS"
-                className="h-6 sm:h-7 w-auto object-contain transition-transform duration-300 group-hover/logo:scale-105 drop-shadow-[0_2px_8px_rgba(5,150,105,0.35)]"
+                className="h-4 sm:h-5.5 w-auto object-contain transition-transform duration-300 group-hover/logo:scale-105 drop-shadow-[0_2px_8px_rgba(5,150,105,0.35)]"
               />
             </a>
           </div>
@@ -87,7 +84,7 @@ export function Footer() {
             </a>
 
             <a
-              href="https://gmail.com"
+              href="mailto:zywebsstudio@gmail.com"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Email"

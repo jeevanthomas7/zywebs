@@ -88,6 +88,7 @@ const jsonLd = {
   description:
     "ZYWEBS builds modern websites, custom web applications, and premium digital experiences.",
   telephone: "+919495547850",
+  email: "zywebsstudio@gmail.com",
   sameAs: [
     "https://instagram.com",
     "https://wa.me/919495547850",

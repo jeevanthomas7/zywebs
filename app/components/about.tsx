@@ -30,6 +30,14 @@ const stats = [
     description:
       "Building strong relationships through reliable service and quality work.",
   },
+ {
+    value: 3,
+    suffix: "+",
+    label: "Years of Experience",
+    description:
+      "Creating modern, reliable digital solutions tailored to real business goals.",
+  },
+
   {
     value: 100,
     suffix: "%",
@@ -37,13 +45,7 @@ const stats = [
     description:
       "Focused on quality, attention to detail, and delivering the best possible experience.",
   },
-  {
-    value: 3,
-    suffix: "+",
-    label: "Years of Experience",
-    description:
-      "Creating modern, reliable digital solutions tailored to real business goals.",
-  },
+ 
 ];
 
 export function About() {
@@ -211,11 +213,11 @@ export function About() {
           </p>
         </div>
 
-        <div className="mt-14 sm:mt-16 lg:mt-24 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-center">
+        <div className="mt-8 sm:mt-12 lg:mt-16 grid grid-cols-1 lg:grid-cols-4 gap-8 lg:gap-14 items-center">
           <div className="order-2 lg:order-1 lg:col-span-7">
             <div
               ref={statsRef}
-              className="grid grid-cols-3 lg:grid-cols-2 gap-2.5 sm:gap-4 lg:gap-6"
+              className="grid grid-cols-3 lg:grid-cols-4 gap-2.5 sm:gap-4 lg:gap-6"
             >
               {stats.map((stat, index) => {
                 const isCommitment = stat.label === "Commitment";
@@ -244,7 +246,7 @@ export function About() {
             </div>
           </div>
 
-          <div className="order-1 lg:order-2 lg:col-span-5 flex items-center justify-center">
+          {/* <div className="hidden lg:flex order-1 lg:order-2 lg:col-span-5 flex items-center justify-center">
             <div className="relative flex items-center justify-center p-2 sm:p-4">
               <div className="pointer-events-none absolute -inset-6 rounded-full bg-[#059669]/10 blur-3xl" />
 
@@ -254,7 +256,7 @@ export function About() {
                 className="relative h-44 sm:h-56 lg:h-72 w-auto object-contain animate-float drop-shadow-[0_15px_35px_rgba(5,150,105,0.25)] select-none"
               />
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </section>

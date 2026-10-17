@@ -108,14 +108,14 @@ export function ContactModal() {
               {/* Studio Logo */}
               <div className="flex items-center gap-2">
                 <img
-                  src="/logo/logo.png"
+                  src="/logo/logowhite.png"
                   alt="ZYWEBS"
-                  className="h-6 sm:h-7 w-auto object-contain drop-shadow-[0_2px_8px_rgba(5,150,105,0.4)]"
+                  className="h-5 sm:h-5 w-auto object-contain drop-shadow-[0_2px_8px_rgba(5,150,105,0.4)]"
                 />
               </div>
 
               {/* Title & Short Clean Subtitle */}
-              <h3 className="mt-5 text-xl sm:text-2xl font-bold tracking-tight text-white">
+              <h3 className="mt-7 sm:mt-5 text-xl sm:text-2xl font-bold tracking-tight text-white">
                 Contact Information
               </h3>
               <p className="mt-1.5 text-xs sm:text-sm text-neutral-400 leading-relaxed">
@@ -156,9 +156,8 @@ export function ContactModal() {
                   </div>
                 </a>
 
-                {/* 3. Email */}
                 <a
-                  href="https://gmail.com"
+                  href="mailto:zywebsstudio@gmail.com"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="group flex items-center gap-3.5 rounded-lg border border-white/10 bg-white/[0.04] p-3 text-xs text-neutral-300 transition-all duration-200 hover:border-[#059669]/50 hover:bg-[#059669]/10 hover:text-white"
@@ -170,7 +169,7 @@ export function ContactModal() {
                   </span>
                   <div className="flex flex-col min-w-0">
                     <span className="text-[10px] font-semibold uppercase tracking-wider text-neutral-400">Email</span>
-                    <span className="font-medium text-white truncate">gmail.com</span>
+                    <span className="font-medium text-white truncate">zywebsstudio@gmail.com</span>
                   </div>
                 </a>
 

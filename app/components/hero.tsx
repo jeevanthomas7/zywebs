@@ -346,7 +346,7 @@ export function Hero() {
       if (!reducedMotion) {
         uniforms.uTime.value += delta;
         if (!dragging) {
-  targetRotation.y += delta * (mobile ? 0.5 : 0.1);
+  targetRotation.y += delta * (mobile ? 0.2 : 0.1);
 }
 
         const easing = 1 - Math.exp(-delta * 7);

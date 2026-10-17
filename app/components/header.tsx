@@ -51,9 +51,9 @@ export function Header() {
             className="flex items-center gap-2 transition-opacity hover:opacity-90 py-0.5 cursor-pointer"
           >
             <img
-              src="/logo/logo.png"
+              src="/logo/logoblack.png"
               alt="ZYWEBS"
-              className="h-6 sm:h-7.5 w-auto object-contain drop-shadow-[0_2px_10px_rgba(5,150,105,0.35)] transition-all duration-300"
+              className="h-5 sm:h-6.5 w-auto object-contain transition-all duration-300"
             />
           </a>
         </div>
