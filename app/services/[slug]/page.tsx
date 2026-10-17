@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import ServiceDetailClient from "./service-client";
 
@@ -94,6 +95,46 @@ export function generateStaticParams() {
     { slug: "ecommerce" },
     { slug: "performance-seo" },
   ];
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const service = servicesData[slug];
+
+  if (!service) {
+    return {
+      title: "Service Not Found",
+    };
+  }
+
+  return {
+    title: `${service.name} | ZYWEBS`,
+    description: service.tagline,
+    alternates: {
+      canonical: `/services/${slug}`,
+    },
+    openGraph: {
+      title: `${service.name} | ZYWEBS`,
+      description: service.tagline,
+      url: `https://zywebs.online/services/${slug}`,
+      images: [
+        {
+          url: service.image,
+          alt: service.name,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${service.name} | ZYWEBS`,
+      description: service.tagline,
+      images: [service.image],
+    },
+  };
 }
 
 export default async function ServiceDetailPage({

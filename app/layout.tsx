@@ -16,11 +16,82 @@ const roboto = Roboto({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://zywebs.online"),
   title: {
-    default: "ZYWEBS | Web Development Studio",
+    default: "ZYWEBS | Premium Web Development & Digital Design Studio",
     template: "%s | ZYWEBS",
   },
-  description: "ZYWEBS builds modern websites and premium digital experiences.",
+  description:
+    "ZYWEBS is a modern web development studio crafting high-performance websites, custom web applications, e-commerce stores, and UI/UX digital experiences that scale.",
+  keywords: [
+    "ZYWEBS",
+    "Web Development",
+    "Web Design",
+    "UI/UX Design",
+    "Next.js Development",
+    "Ecommerce Website",
+    "SEO Optimization",
+    "Web Development Studio",
+    "Custom Websites",
+    "Performance Optimization",
+  ],
+  authors: [{ name: "ZYWEBS", url: "https://zywebs.online" }],
+  creator: "ZYWEBS",
+  publisher: "ZYWEBS",
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "https://zywebs.online",
+    siteName: "ZYWEBS",
+    title: "ZYWEBS | Premium Web Development & Digital Design Studio",
+    description:
+      "Crafting high-performance websites, bespoke e-commerce platforms, and intuitive UI/UX experiences engineered to convert.",
+    images: [
+      {
+        url: "/logo/logo.png",
+        width: 1200,
+        height: 630,
+        alt: "ZYWEBS Web Development Studio",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "ZYWEBS | Premium Web Development & Digital Design Studio",
+    description:
+      "Crafting high-performance websites, bespoke e-commerce platforms, and intuitive UI/UX experiences engineered to convert.",
+    images: ["/logo/logo.png"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+};
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  name: "ZYWEBS",
+  url: "https://zywebs.online",
+  logo: "https://zywebs.online/logo/logo.png",
+  image: "https://zywebs.online/logo/logo.png",
+  description:
+    "ZYWEBS builds modern websites, custom web applications, and premium digital experiences.",
+  telephone: "+919495547850",
+  sameAs: [
+    "https://instagram.com",
+    "https://wa.me/919495547850",
+  ],
 };
 
 export default function RootLayout({
@@ -36,12 +107,15 @@ export default function RootLayout({
           crossOrigin="anonymous"
           referrerPolicy="no-referrer"
         />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
       </head>
       <body className={`${roboto.variable} font-sans antialiased bg-[#0c1412]`}>
         <SmoothScroll />
         <Header />
-        {/* Main Page Content Wrapper (Layers above the sticky footer to create the un-overlapping curtain reveal effect) */}
-        <div className="relative z-10 bg-[#f3f4ef] min-h-screen ">
+        <div className="relative z-10 bg-[#f3f4ef] min-h-screen">
           {children}
         </div>
         <Footer />
