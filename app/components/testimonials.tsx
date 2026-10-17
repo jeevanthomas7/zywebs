@@ -3,8 +3,6 @@
 import React, { useState } from "react";
 
 const testimonials = [
-
- 
   {
     name: "Sophia Martinez",
     role: "Creative Director, Verve Studio",
@@ -13,8 +11,7 @@ const testimonials = [
       "Working with ZYWEBS was effortless. Their attention to detail, performance benchmarks, and bespoke design made our brand stand out in a crowded market. Truly world-class work.",
     image: "/img/food.png",
   },
-
-   {
+  {
     name: "Alex Vance",
     role: "Founder & CEO, Apex Fintech",
     tagline: "Bespoke digital architecture, seamless UX & doubled conversions.",
@@ -57,7 +54,6 @@ export function Testimonials() {
       className="w-full pt-12 sm:pt-16 lg:pt-36 pb-4 sm:pb-16 lg:pb-22 bg-white text-black"
     >
       <div className="container mx-auto px-3 sm:px-6 lg:px-10">
-        {/* Section Header: Left has Title, Right has Subtitle paragraph */}
         <div className="mb-8 lg:mb-14 flex flex-col justify-between gap-4 md:flex-row md:items-end text-center sm:text-left">
           <div className="text-center sm:text-left">
             <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[#059669]">
@@ -72,24 +68,20 @@ export function Testimonials() {
           </p>
         </div>
 
-        {/* 2-Box Testimonial Layout: Left Website/Client Image, Right Quote Data */}
         <div
           onTouchStart={handleTouchStart}
           onTouchEnd={handleTouchEnd}
           className="grid grid-cols-1 lg:grid-cols-12 gap-5 sm:gap-6 items-stretch"
         >
-          {/* Left Box: Website / Client Image with Bottom Highlight Overlay */}
           <div className="lg:col-span-5 relative overflow-hidden rounded-xl sm:rounded-2xl bg-[#f4f4f5] min-h-[260px] sm:min-h-[290px] lg:min-h-[320px] flex items-end border border-black/10">
             <img
               key={`img-${currentIndex}`}
               src={current.image}
               alt={current.name}
-              className="absolute inset-0 h-full w-full object-cover transition-all duration-500 ease-out animate-in fade-in"
+              className="absolute inset-0 h-full w-full object-cover grayscale transition-all duration-500 ease-out animate-in fade-in"
             />
-            {/* Dark gradient vignette at bottom for text contrast */}
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent pointer-events-none" />
 
-            {/* Bottom Overlay Badge */}
             <div className="relative z-10 p-4 sm:p-6 max-w-sm">
               <span className="inline-block bg-white text-black text-xs sm:text-[13px] font-medium px-3.5 py-2 rounded-lg shadow-sm leading-snug">
                 {current.tagline}
@@ -97,9 +89,7 @@ export function Testimonials() {
             </div>
           </div>
 
-          {/* Right Box: Testimonial Quote, Author & Bottom-Right Navigation Arrows */}
           <div className="lg:col-span-7 rounded-xl sm:rounded-2xl bg-[#f4f4f5] border border-black/10 p-6 sm:p-8 lg:p-10 flex flex-col justify-between min-h-[260px] sm:min-h-[290px] lg:min-h-[320px]">
-            {/* Top Quote & Author */}
             <div key={`content-${currentIndex}`} className="animate-in fade-in duration-300">
               <blockquote className="text-lg sm:text-xl lg:text-2xl font-normal leading-relaxed text-black/90">
                 &ldquo;{current.quote}&rdquo;
@@ -115,9 +105,7 @@ export function Testimonials() {
               </div>
             </div>
 
-            {/* Bottom Row: Slide Indicators and Navigation Arrows */}
             <div className="mt-8 flex items-center justify-between pt-4">
-              {/* Slide Counter / Dots */}
               <div className="flex items-center gap-1.5">
                 {testimonials.map((_, idx) => (
                   <button
@@ -134,7 +122,6 @@ export function Testimonials() {
                 ))}
               </div>
 
-              {/* Navigation Arrows in bottom-right */}
               <div className="flex items-center gap-2">
                 <button
                   type="button"
@@ -185,3 +172,5 @@ export function Testimonials() {
     </section>
   );
 }
+
+export default Testimonials;
