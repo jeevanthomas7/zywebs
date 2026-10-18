@@ -35,7 +35,7 @@ export default function Home() {
       <Faq />
 
        {/* 10. CTA Section */}
-      <ContactCta />
+      {/* <ContactCta /> */}
 
       {/* 8. Testimonials */}
       <Testimonials />

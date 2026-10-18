@@ -59,7 +59,7 @@ export function Faq() {
   return (
     <section
       id="faq"
-      className="w-full pt-12 sm:pt-16 lg:pt-22 pb-12 sm:pb-16 lg:pb-40 bg-white text-black"
+      className="w-full pt-12 sm:pt-16 lg:pt-22 pb-5 sm:pb-12 lg:pb-14 bg-white text-black"
     >
       <div className="container mx-auto px-3 sm:px-6 lg:px-10">
         {/* Section Header: Subheading & Heading on Left, Paragraph Description on Right */}

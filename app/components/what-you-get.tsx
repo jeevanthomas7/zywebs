@@ -205,7 +205,7 @@ export function WhatYouGet() {
             Deliverables
           </span>
           <h2 className="mt-2 text-3xl sm:text-5xl lg:text-6xl font-semibold capitalize tracking-tight text-black">
-            What You Get
+            Why Choose Us
           </h2>
           <div className="mx-auto mt-4 h-0.5 w-12 rounded-full bg-[#059669]/60" />
         </div>
@@ -285,7 +285,7 @@ export function WhatYouGet() {
             <span>Start a Project</span>
             <span className="relative flex h-6 w-6 sm:h-7 sm:w-7 shrink-0 items-center justify-center overflow-hidden rounded-md sm:rounded-lg bg-white text-black transition-transform duration-300 group-hover:scale-105">
               <svg
-                className="h-3 w-3 sm:h-3.5 sm:w-3.5 transition-transform duration-300 ease-out group-hover:translate-x-4 group-hover:-translate-y-4"
+                className="h-3 w-3 sm:h-3 sm:w-3 transition-transform duration-300 ease-out group-hover:translate-x-4 group-hover:-translate-y-4"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -298,7 +298,7 @@ export function WhatYouGet() {
                 />
               </svg>
               <svg
-                className="absolute h-3 w-3 sm:h-3.5 sm:w-3.5 -translate-x-4 translate-y-4 transition-transform duration-300 ease-out group-hover:translate-x-0 group-hover:translate-y-0"
+                className="absolute h-3 w-3 sm:h-3 sm:w-3 -translate-x-4 translate-y-4 transition-transform duration-300 ease-out group-hover:translate-x-0 group-hover:translate-y-0"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
