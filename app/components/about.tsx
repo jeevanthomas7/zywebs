@@ -17,21 +17,21 @@ export const HIGHLIGHTED_GREEN_WORDS = [
 
 const stats = [
   {
-    value: 7,
+    value: 15,
     suffix: "+",
     label: "Projects Completed",
     description:
       "Modern websites crafted with a focus on design, performance, and results.",
   },
   {
-    value: 5,
+    value: 10,
     suffix: "+",
     label: "Happy Clients",
     description:
       "Building strong relationships through reliable service and quality work.",
   },
  {
-    value: 3,
+    value: 1,
     suffix: "+",
     label: "Years of Experience",
     description:
