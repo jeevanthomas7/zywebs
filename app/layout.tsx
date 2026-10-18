@@ -18,7 +18,7 @@ const roboto = Roboto({
 export const metadata: Metadata = {
   metadataBase: new URL("https://zywebs.online"),
   title: {
-    default: "ZYWEBS | Premium Web Development & Digital Design Studio",
+    default: "ZYWEBS | Web Design & Development Studio",
     template: "%s | ZYWEBS",
   },
   description:
