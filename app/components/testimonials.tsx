@@ -78,7 +78,7 @@ export function Testimonials() {
               key={`img-${currentIndex}`}
               src={current.image}
               alt={current.name}
-              className="absolute inset-0 h-full w-full object-cover grayscale transition-all duration-500 ease-out animate-in fade-in"
+              className="absolute inset-0 h-full w-full object-cover transition-all duration-500 ease-out animate-in fade-in"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent pointer-events-none" />
 

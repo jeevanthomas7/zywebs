@@ -2,19 +2,6 @@
 
 import React, { useEffect, useRef, useState } from "react";
 
-const aboutText =
-  "At ZYWEBS, we turn bold ideas into exceptional digital experiences. By combining minimalist aesthetics with powerful technology, we create bespoke websites and web applications that reflect your brand and move your business forward. From intuitive interfaces to seamless performance across every device, every detail is designed with purpose — helping your business build trust, engage audiences, and grow online.";
-
-export const HIGHLIGHTED_GREEN_WORDS = [
-  "exceptional",
-  "digital",
-  "experiences",
-  "powerful",
-  "technology",
-  "build",
-  "trust",
-];
-
 const stats = [
   {
     value: 15,
@@ -26,18 +13,17 @@ const stats = [
   {
     value: 10,
     suffix: "+",
-    label: "Happy Clients",
+    label: " Clients Work Completed",
     description:
       "Building strong relationships through reliable service and quality work.",
   },
- {
+  {
     value: 1,
     suffix: "+",
     label: "Years of Experience",
     description:
       "Creating modern, reliable digital solutions tailored to real business goals.",
   },
-
   {
     value: 100,
     suffix: "%",
@@ -45,79 +31,51 @@ const stats = [
     description:
       "Focused on quality, attention to detail, and delivering the best possible experience.",
   },
- 
 ];
 
 export function About() {
-  const paragraphRef = useRef<HTMLParagraphElement | null>(null);
+  const sectionRef = useRef<HTMLElement | null>(null);
+  const imageRef = useRef<HTMLDivElement | null>(null);
   const statsRef = useRef<HTMLDivElement | null>(null);
   const animatedRef = useRef(false);
   const [counts, setCounts] = useState(stats.map(() => 0));
 
   useEffect(() => {
-    const paragraph = paragraphRef.current;
-    if (!paragraph) return;
+    let ticking = false;
 
-    const words = paragraph.querySelectorAll<HTMLSpanElement>("span.reveal-word");
-    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const handleScroll = () => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          if (!sectionRef.current || !imageRef.current) {
+            ticking = false;
+            return;
+          }
 
-    if (reduced) {
-      words.forEach((word) => {
-        word.style.opacity = "1";
-      });
-      return;
-    }
+          const rect = sectionRef.current.getBoundingClientRect();
+          const windowHeight = window.innerHeight;
 
-    let isVisible = false;
-    let rafId = 0;
+          if (rect.top < windowHeight && rect.bottom > 0) {
+            const progress =
+              (windowHeight - rect.top) / (windowHeight + rect.height);
+            const translateY = (progress - 0.5) * -70;
+            imageRef.current.style.transform = `translate3d(0, ${translateY.toFixed(
+              2
+            )}px, 0)`;
+          }
 
-    const update = () => {
-      if (!paragraph || !isVisible) return;
-      const rect = paragraph.getBoundingClientRect();
-      const height = window.innerHeight;
-
-      const startY = height * 0.85;
-      const endY = height * 0.15;
-      const totalDist = startY - endY + rect.height;
-      const currentDist = startY - rect.top;
-      const progress = Math.max(0, Math.min(1, currentDist / totalDist));
-
-      const total = words.length;
-      words.forEach((word, index) => {
-        const wordProgress = Math.max(0, Math.min(1, progress * total - index));
-        const opacity = 0.2 + wordProgress * 0.8;
-        word.style.opacity = opacity.toFixed(3);
-      });
+          ticking = false;
+        });
+        ticking = true;
+      }
     };
 
-    const loop = () => {
-      if (isVisible) update();
-      rafId = requestAnimationFrame(loop);
-    };
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        isVisible = entry.isIntersecting;
-        if (isVisible) update();
-      },
-      { rootMargin: "250px 0px 250px 0px" }
-    );
-
-    observer.observe(paragraph);
-    rafId = requestAnimationFrame(loop);
-
-    const onScrollOrResize = () => {
-      if (isVisible) update();
-    };
-
-    window.addEventListener("scroll", onScrollOrResize, { passive: true });
-    window.addEventListener("resize", onScrollOrResize, { passive: true });
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    window.addEventListener("resize", handleScroll, { passive: true });
 
     return () => {
-      observer.disconnect();
-      cancelAnimationFrame(rafId);
-      window.removeEventListener("scroll", onScrollOrResize);
-      window.removeEventListener("resize", onScrollOrResize);
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleScroll);
     };
   }, []);
 
@@ -162,101 +120,127 @@ export function About() {
     };
   }, []);
 
-  const isGreenWord = (word: string) => {
-    const clean = word.toLowerCase().replace(/[^a-z0-9]/g, "");
-    return HIGHLIGHTED_GREEN_WORDS.some(
-      (hw) => hw.toLowerCase().replace(/[^a-z0-9]/g, "") === clean
-    );
-  };
-
-  const words = aboutText.trim().split(/\s+/);
-
   return (
     <section
+      ref={sectionRef}
       id="about"
-      className="w-full bg-white pt-10 sm:pt-16 lg:pt-22 sm:pb-16 lg:pb-22 text-black overflow-hidden"
+      className="w-full bg-white pt-10 sm:pt-20 lg:pt-28 pb-0 sm:pb-20 lg:pb-24 text-black overflow-hidden"
     >
       <div className="container mx-auto px-3 sm:px-6 lg:px-10">
-        <div className="mb-8 lg:mb-14">
-          <p className="text-xs font-semibold uppercase tracking-[0.25em] text-[#059669] text-center sm:text-left">
-            About Us
-          </p>
+        <div className="grid grid-cols-1 sm:grid-cols-12 gap-8 lg:gap-12 items-center">
+          <div className="order-1 lg:order-1 sm:col-span-6 flex flex-col">
+            <div className="text-center sm:text-left">
+              <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[#059669]">
+                About Us
+              </p>
 
-          <h2 className="mt-2 text-3xl sm:text-5xl lg:text-6xl font-semibold tracking-wider text-center sm:text-left">
-            <span className="text-black">Who We Are </span>
-          </h2>
-        </div>
+              <h2 className="mt-2 text-[32px] sm:text-4xl lg:text-6xl font-semibold tracking-tight text-black leading-[1.15]">
+                Digital Experiences.
+                <br />
+                <span className="text-[#059669]">
+                  Built to Make an Impact.
+                </span>
+              </h2>
+            </div>
 
-        <div className="w-full">
-          <p
-            ref={paragraphRef}
-            className="w-full text-xl sm:text-4xl lg:text-4xl font-normal leading-[1.3] lg:leading-[1.4] tracking-tight"
-          >
-            {words.map((word, index) => {
-              const highlighted = isGreenWord(word);
-              return (
-                <React.Fragment key={index}>
-                  <span
-                    className={`reveal-word inline-block transition-opacity duration-150 ease-out ${
-                      highlighted
-                        ? "text-[#059669] font-medium"
-                        : "text-black"
-                    }`}
-                    style={{ opacity: 0.2 }}
+           
+
+            <div className="hidden sm:block mt-4 sm:mt-6 space-y-3 sm:space-y-4 text-sm sm:text-base leading-relaxed text-black/65 max-w-2xl text-left">
+              <p>
+                We build modern, high-performance websites that combine thoughtful
+                design with powerful technology. From bespoke business websites to
+                custom web applications, we engineer digital solutions that elevate
+                your brand and captivate your audience.
+              </p>
+              <p>
+                Every detail is purposeful — blending minimalist aesthetics with
+                lightning-fast load speeds, intuitive user journeys, and robust search
+                engine optimization so your business builds trust, commands authority,
+                and scales effortlessly online.
+              </p>
+            </div>
+
+            <div className="hidden sm:flex mt-6 sm:mt-8 items-center justify-start">
+              <a
+                href="#"
+                className="group inline-flex items-center gap-2.5 sm:gap-3 rounded-lg bg-[#059669] pl-5 pr-2 py-2 sm:pl-6 sm:pr-2.5 sm:py-2.5 text-xs sm:text-sm font-semibold text-white transition-all duration-300 hover:bg-[#047857] hover:shadow-xl hover:shadow-[#059669]/25 active:scale-95 cursor-pointer shadow-lg shadow-[#059669]/20"
+              >
+                <span>More About Us</span>
+                <span className="relative flex h-6 w-6 sm:h-7 sm:w-7 shrink-0 items-center justify-center overflow-hidden rounded-md sm:rounded-lg bg-white text-black transition-transform duration-300 group-hover:scale-105">
+                  <svg
+                    className="h-3 w-3 sm:h-3 sm:w-3 transition-transform duration-300 ease-out group-hover:translate-x-4 group-hover:-translate-y-4"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    strokeWidth="2.5"
                   >
-                    {word}
-                  </span>
-                  {index < words.length - 1 ? " " : ""}
-                </React.Fragment>
-              );
-            })}
-          </p>
-        </div>
-
-        <div className="mt-8 sm:mt-12 lg:mt-16 grid grid-cols-1 lg:grid-cols-4 gap-8 lg:gap-14 items-center">
-          <div className="order-2 lg:order-1 lg:col-span-7">
-            <div
-              ref={statsRef}
-              className="grid grid-cols-3 lg:grid-cols-4 gap-2.5 sm:gap-4 lg:gap-6"
-            >
-              {stats.map((stat, index) => {
-                const isCommitment = stat.label === "Commitment";
-                return (
-                  <div
-                    key={stat.label}
-                    className={`rounded-xl sm:rounded-2xl border border-black/10 bg-black/[0.02] p-3 sm:p-5 lg:p-6 transition-all duration-300 hover:border-[#059669]/40 hover:bg-[#059669]/[0.02] flex flex-col justify-between ${
-                      isCommitment ? "hidden lg:flex" : "flex"
-                    }`}
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25"
+                    />
+                  </svg>
+                  <svg
+                    className="absolute h-3 w-3 sm:h-3 sm:w-3 -translate-x-4 translate-y-4 transition-transform duration-300 ease-out group-hover:translate-x-0 group-hover:translate-y-0"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    strokeWidth="2.5"
                   >
-                    <div className="text-2xl sm:text-3xl lg:text-4xl font-bold text-black/85">
-                      {counts[index]}
-                      {stat.suffix}
-                    </div>
-
-                    <div className="mt-1 sm:mt-2 text-[10px] sm:text-xs font-semibold uppercase tracking-wider text-[#059669]">
-                      {stat.label}
-                    </div>
-
-                    <p className="mt-2 text-xs leading-5 text-black/55 hidden sm:block">
-                      {stat.description}
-                    </p>
-                  </div>
-                );
-              })}
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25"
+                    />
+                  </svg>
+                </span>
+              </a>
             </div>
           </div>
 
-          {/* <div className="hidden lg:flex order-1 lg:order-2 lg:col-span-5 flex items-center justify-center">
-            <div className="relative flex items-center justify-center p-2 sm:p-4">
-              <div className="pointer-events-none absolute -inset-6 rounded-full bg-[#059669]/10 blur-3xl" />
-
+          <div className="order-1 lg:order-2 sm:col-span-6 items-center justify-center relative">
+            <div
+              ref={imageRef}
+              className="w-full max-w-3xl flex items-center justify-center transition-transform duration-75 ease-out will-change-transform"
+            >
               <img
-                src="/logo/icon.png"
-                alt="ZYWEBS Z Logo"
-                className="relative h-44 sm:h-56 lg:h-72 w-auto object-contain animate-float drop-shadow-[0_15px_35px_rgba(5,150,105,0.25)] select-none"
+                src="/img/abt.png"
+                alt="Digital Experiences - ZYWEBS"
+                className="w-full h-auto object-contain lg:max-h-[520px] select-none pointer-events-none drop-shadow-[0_20px_40px_rgba(5,150,105,0.1)]"
+                loading="lazy"
               />
             </div>
-          </div> */}
+          </div>
+        </div>
+
+        <div
+          ref={statsRef}
+          className="mt-8 sm:mt-16 lg:mt-20 grid grid-cols-3 sm:grid-cols-4 gap-2.5 sm:gap-4 lg:gap-6"
+        >
+          {stats.map((stat, index) => {
+            const isCommitment = stat.label === "Commitment";
+            return (
+              <div
+                key={stat.label}
+                className={`rounded-md sm:rounded-2xl border border-black/10 bg-black/[0.02] p-3 sm:p-5 lg:p-6 transition-all duration-300 hover:border-[#059669]/40 hover:bg-[#059669]/[0.02] flex flex-col justify-between ${
+                  isCommitment ? "hidden sm:flex" : "flex"
+                }`}
+              >
+                <div className="text-xl sm:text-3xl lg:text-4xl font-bold text-black/85">
+                  {counts[index]}
+                  {stat.suffix}
+                </div>
+
+                <div className="mt-1 sm:mt-2 text-[9px] sm:text-xs font-semibold uppercase tracking-wider text-[#059669]">
+                  {stat.label}
+                </div>
+
+                <p className="mt-2 text-xs leading-5 text-black/55 hidden sm:block">
+                  {stat.description}
+                </p>
+              </div>
+            );
+          })}
         </div>
       </div>
     </section>
