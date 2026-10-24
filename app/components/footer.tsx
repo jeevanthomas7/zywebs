@@ -37,7 +37,7 @@ export function Footer() {
             />
           </div>
 
-          <h2 className="relative z-10 w-full text-center font-black uppercase tracking-tight sm:tracking-normal leading-none text-[clamp(2.1rem,11.5vw,11.5rem)] text-white/90 select-none flex items-center justify-center flex-wrap gap-x-3 sm:gap-x-6 transition-colors duration-300">
+          <h2 className="relative z-10 w-full text-center font-black uppercase tracking-tight sm:tracking-normal leading-none text-[clamp(2.1rem,11.5vw,11.5rem)] text-white/90 select-none flex items-center justify-center flex-row gap-x-3 sm:gap-x-6 transition-colors duration-300">
             <span>ZYWEBS</span>
             <span>STUDIO</span>
           </h2>
@@ -56,7 +56,7 @@ export function Footer() {
 
           <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 text-white/70">
             <a
-              href="https://instagram.com"
+              href="https://www.instagram.com/zywebs.online"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Instagram"

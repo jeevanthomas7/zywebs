@@ -175,7 +175,7 @@ export function ContactModal() {
 
                 {/* 4. Instagram */}
                 <a
-                  href="https://instagram.com"
+                  href="https://www.instagram.com/zywebs.online"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="group flex items-center gap-3.5 rounded-lg border border-white/10 bg-white/[0.04] p-3 text-xs text-neutral-300 transition-all duration-200 hover:border-[#059669]/50 hover:bg-[#059669]/10 hover:text-white"
@@ -185,7 +185,7 @@ export function ContactModal() {
                   </span>
                   <div className="flex flex-col min-w-0">
                     <span className="text-[10px] font-semibold uppercase tracking-wider text-neutral-400">Instagram</span>
-                    <span className="font-medium text-white truncate">instagram.com</span>
+                    <span className="font-medium text-white truncate">@zywebs.online</span>
                   </div>
                 </a>
 

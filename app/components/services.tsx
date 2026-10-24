@@ -59,7 +59,7 @@ export function Services() {
               className="relative isolate min-h-[360px] sm:min-h-[480px] lg:min-h-[640px] flex items-center justify-center overflow-hidden rounded-xl sm:rounded-2xl"
             >
               <div
-                className="absolute inset-0 -z-20 rounded-xl sm:rounded-2xl bg-cover bg-center sm:bg-fixed"
+                className="absolute inset-0 -z-20 rounded-xl sm:rounded-2xl bg-cover bg-center bg-fixed"
                 style={{ backgroundImage: `url(${service.image})` }}
               />
 

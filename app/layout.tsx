@@ -90,7 +90,7 @@ const jsonLd = {
   telephone: "+919495547850",
   email: "zywebsstudio@gmail.com",
   sameAs: [
-    "https://instagram.com",
+    "https://www.instagram.com/zywebs.online",
     "https://wa.me/919495547850",
   ],
 };
