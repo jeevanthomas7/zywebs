@@ -7,7 +7,7 @@ import * as THREE from "three";
 export const SPHERE_PRIMARY_COLOR = "#059669";   // Main brand particle color (Emerald)
 export const SPHERE_SECONDARY_COLOR = "#1f2937"; // Contrast/shadow particle color (Dark Slate)
 export const SPHERE_DESKTOP_OPACITY = 0.95;     // Desktop sphere opacity (bolder)
-export const SPHERE_MOBILE_OPACITY = 0.70;      // Mobile sphere opacity (lighter, prevents bold clumping)
+export const SPHERE_MOBILE_OPACITY = 0.60;      // Mobile sphere opacity (lighter, prevents bold clumping)
 
 const messages = [
   "Build the website you actually need?",
