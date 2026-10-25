@@ -9,12 +9,15 @@ import { Testimonials } from "@/components/testimonials";
 import { ContactCta } from "@/components/contact-cta";
 import { Blog } from "./components/blog";
 import Test from "./components/test";
+import { Hero2 } from "./components/hero2";
 
 export default function Home() {
   return (
     <main className="w-full">
       {/* 1. Hero */}
       <Hero />
+
+      {/* <Hero2 /> */}
 
       {/* 2. About */}
       <About />

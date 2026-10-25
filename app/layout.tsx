@@ -7,6 +7,7 @@ import { ContactModal } from "@/components/contact-modal";
 import { SmoothScroll } from "@/components/smooth-scroll";
 import "lenis/dist/lenis.css";
 import "./globals.css";
+import Header2 from "./components/header2";
 
 const roboto = Roboto({
   subsets: ["latin"],
@@ -116,6 +117,7 @@ export default function RootLayout({
       <body className={`${roboto.variable} font-sans antialiased bg-[#0c1412]`}>
         <SmoothScroll />
         <Header />
+        {/* <Header2 /> */}
         <div className="relative z-10 bg-[#f3f4ef] min-h-screen">
           {children}
         </div>

@@ -141,27 +141,31 @@ export function Header() {
             type="button"
             onClick={() => setMenuOpen(!menuOpen)}
             aria-label="Toggle mobile menu"
-            className="inline-flex items-center justify-center rounded-lg border border-black/10 bg-black/[0.04] p-2 text-neutral-800 transition-colors hover:bg-black/[0.08] active:scale-95"
+            className="inline-flex items-center justify-center p-1 text-neutral-800 transition-opacity hover:opacity-70 active:scale-95 cursor-pointer"
           >
             {menuOpen ? (
               <svg
-                className="h-5 w-5"
+                className="h-4 w-4"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
                 strokeWidth="2"
+                strokeLinecap="round"
               >
-                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                <path d="M6 18L18 6M6 6l12 12" />
               </svg>
             ) : (
               <svg
-                className="h-5 w-5"
+                className="h-3.5 w-5"
+                viewBox="0 0 24 18"
                 fill="none"
-                viewBox="0 0 24 24"
                 stroke="currentColor"
-                strokeWidth="2"
+                strokeWidth="2.2"
+                strokeLinecap="round"
               >
-                <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+                <line x1="2" y1="3" x2="22" y2="3" />
+                <line x1="11" y1="9" x2="22" y2="9" />
+                <line x1="2" y1="15" x2="22" y2="15" />
               </svg>
             )}
           </button>

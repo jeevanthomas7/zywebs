@@ -7,7 +7,7 @@ import * as THREE from "three";
 export const SPHERE_PRIMARY_COLOR = "#059669";   // Main brand particle color (Emerald)
 export const SPHERE_SECONDARY_COLOR = "#1f2937"; // Contrast/shadow particle color (Dark Slate)
 export const SPHERE_DESKTOP_OPACITY = 0.95;     // Desktop sphere opacity (bolder)
-export const SPHERE_MOBILE_OPACITY = 0.70;      // Mobile sphere opacity (lighter, prevents bold clumping)
+export const SPHERE_MOBILE_OPACITY = 0.85;      // Mobile sphere opacity (lighter, prevents bold clumping)
 
 const messages = [
   "Build the website you actually need?",
@@ -346,8 +346,8 @@ export function Hero() {
       if (!reducedMotion) {
         uniforms.uTime.value += delta;
         if (!dragging) {
-  targetRotation.y += delta * (mobile ? 0.2 : 0.1);
-}
+          targetRotation.y += delta * (mobile ? 0.2 : 0.1);
+        }
 
         const easing = 1 - Math.exp(-delta * 7);
         uniforms.uRotation.value.lerp(targetRotation, easing);
@@ -481,8 +481,8 @@ export function Hero() {
         </p>
 
         <div className="mt-8 flex flex-wrap items-center justify-center gap-4 sm:mt-10 md:mt-12 lg:mt-14 pointer-events-auto">
-         
-           <a
+
+          <a
             href="#services"
             className="group inline-flex items-center gap-2.5 sm:gap-3 rounded-lg bg-[#059669] pl-5 pr-2 py-2 sm:pl-6 sm:pr-2.5 sm:py-2.5 text-xs sm:text-sm font-semibold text-white transition-all duration-300 hover:bg-[#047857] hover:shadow-xl hover:shadow-[#059669]/25 active:scale-95 cursor-pointer shadow-lg shadow-[#059669]/20"
           >
@@ -516,7 +516,7 @@ export function Hero() {
               </svg>
             </span>
           </a>
-         
+
           <button
             type="button"
             onClick={handleContactClick}
@@ -553,7 +553,7 @@ export function Hero() {
             </span>
           </button>
 
-      
+
         </div>
       </div>
 
