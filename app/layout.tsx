@@ -118,7 +118,7 @@ export default function RootLayout({
         <SmoothScroll />
         <Header />
         {/* <Header2 /> */}
-        <div className="relative z-10 bg-[#f3f4ef] min-h-screen">
+        <div className="relative z-10 min-h-screen">
           {children}
         </div>
         <Footer />

@@ -1,6 +1,13 @@
 import { Hero } from "@/components/hero";
 import { About } from "@/components/about";
 import { Services } from "@/components/services";
+import { Hero2 } from "@/components/hero2";
+import { About2 } from "@/components/about2";
+import { Services2 } from "@/components/services2";
+import {
+  HeroAbout2Container,
+  Services2Container,
+} from "@/components/home2-transition-section";
 import { Work } from "@/components/work";
 import { WhatYouGet } from "@/components/what-you-get";
 import { Technologies } from "@/components/technologies";
@@ -8,22 +15,20 @@ import { Faq } from "@/components/faq";
 import { Testimonials } from "@/components/testimonials";
 import { ContactCta } from "@/components/contact-cta";
 import { Blog } from "./components/blog";
-import Test from "./components/test";
-import { Hero2 } from "./components/hero2";
 
 export default function Home() {
   return (
     <main className="w-full">
-      {/* 1. Hero */}
-      <Hero />
+      {/* 
+      <HeroAbout2Container />
+      <Services2Container />
+      */}
 
-      {/* <Hero2 /> */}
-
-      {/* 2. About */}
-      <About />
-
-      {/* 3. Services */}
-      <Services />
+      
+        <Hero />
+        <About />
+        <Services />
+      
 
       {/* 4. Latest Works */}
       <Work />
@@ -37,13 +42,13 @@ export default function Home() {
       {/* 7. FAQ */}
       <Faq />
 
-       {/* 10. CTA Section */}
+      {/* 8. CTA Section */}
       {/* <ContactCta /> */}
 
-      {/* 8. Testimonials */}
+      {/* 9. Testimonials */}
       <Testimonials />
 
-      {/* 9. Blog */}
+      {/* 10. Blog */}
       <Blog />
     </main>
   );
